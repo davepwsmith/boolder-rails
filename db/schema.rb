@@ -59,7 +59,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_04_091012) do
     t.text "description_en"
     t.text "warning_fr"
     t.text "warning_en"
-    t.integer "bleau_area_id", null: false
     t.integer "cluster_id"
     t.index ["slug"], name: "index_areas_on_slug", unique: true
     t.index ["tags"], name: "index_areas_on_tags", using: :gin
@@ -85,34 +84,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_04_091012) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
-  end
-
-  create_table "bleau_areas", force: :cascade do |t|
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "category"
-    t.index ["slug"], name: "index_bleau_areas_on_slug", unique: true
-  end
-
-  create_table "bleau_problems", force: :cascade do |t|
-    t.string "name"
-    t.string "grade"
-    t.string "steepness"
-    t.boolean "sit_start"
-    t.string "tags", default: [], null: false, array: true
-    t.bigint "bleau_circuit_id"
-    t.string "circuit_number"
-    t.string "circuit_letter"
-    t.integer "ascents"
-    t.integer "ratings"
-    t.decimal "ratings_average"
-    t.bigint "bleau_area_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bleau_area_id"], name: "index_bleau_problems_on_bleau_area_id"
-    t.index ["bleau_circuit_id"], name: "index_bleau_problems_on_bleau_circuit_id"
   end
 
   create_table "boulders", force: :cascade do |t|
@@ -215,7 +186,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_04_091012) do
     t.string "steepness", null: false
     t.integer "height"
     t.bigint "area_id"
-    t.integer "bleau_info_id"
     t.string "landing"
     t.boolean "featured", default: false, null: false
     t.bigint "parent_id"

@@ -9,7 +9,6 @@ class Problem < ApplicationRecord
   has_many :topos, through: :lines
   has_many :children, class_name: "Problem", foreign_key: "parent_id"
   belongs_to :parent, class_name: "Problem", optional: true
-  belongs_to :bleau_problem, foreign_key: "bleau_info_id", optional: true
   has_many :contribution_requests
   has_many :contributions
 
@@ -41,7 +40,6 @@ class Problem < ApplicationRecord
   validates :steepness, inclusion: { in: STEEPNESS_VALUES }
   validates :grade, inclusion: { in: GRADE_VALUES }, allow_blank: true
   validates :landing, inclusion: { in: LANDING_VALUES }, allow_blank: true
-  validates :bleau_info_id, uniqueness: true, allow_blank: true
   validate :validate_circuit_letter
   validates :circuit_number, uniqueness: { scope: [ :circuit_letter, :circuit_id ] }, allow_nil: true
   validates :circuit_letter, uniqueness: { scope: [ :circuit_number, :circuit_id ] }, allow_nil: true

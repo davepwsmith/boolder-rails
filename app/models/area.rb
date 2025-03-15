@@ -8,7 +8,6 @@ class Area < ApplicationRecord
   has_many :circuits, -> { distinct }, through: :problems
   has_many :poi_routes
   belongs_to :cluster
-  belongs_to :bleau_area
 
   has_one_attached :cover do |attachable|
     attachable.variant :thumb, resize_to_limit: [ 400, 400 ], saver: { quality: 80, strip: true, interlace: true }, preprocessed: true
@@ -20,9 +19,11 @@ class Area < ApplicationRecord
   scope :published, -> { where(published: true) }
   include HasTagsConcern
 
+  TAGS = [ "popular", "beginner_friendly", "family_friendly", "dry_fast" ]
+
   normalizes :name, :short_name, :description_fr, :description_en, :warning_fr, :warning_en, with: ->(s) { s.strip.presence }
 
-  validates :tags, array: { inclusion: { in: %w[popular beginner_friendly family_friendly dry_fast] } }
+  validates :tags, array: { inclusion: { in: TAGS } }
   validates :slug, presence: true
 
 

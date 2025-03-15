@@ -2,7 +2,11 @@
   <%= form.label :published %>
   <%= form.check_box :published %>
 </div>
-<div class="col-span-6 sm:col-span-2"></div>
+
+<div class="col-span-6 sm:col-span-2">
+  <%= form.label :cluster %> 
+  <%= form.collection_select :cluster_id, Cluster.all, :id, :name, { :prompt => "Create New"} %> 
+</div>
 
 <div class="col-span-6 sm:col-span-4">
   <%= form.label :name %>
@@ -27,8 +31,8 @@
 <div class="col-span-6 sm:col-span-4"></div>
 
 <div class="col-span-6 sm:col-span-4">
-  <%= form.label :joined_tags, 'Tags' %>
-  <%= form.text_field :joined_tags, value: @area.tags.join(","), autocomplete: "off" %>
+  <%= form.label :tags, 'Tags' %>
+  <%= form.select :tags, Area::TAGS, {:multiple => true} %>
 </div>
 
 <div class="col-span-6 sm:col-span-6">

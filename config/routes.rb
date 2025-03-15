@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       end
       resources :topos
       resources :problem_imports
-      resources :bleau_problems
       resources :lines
       resources :pois
       resources :poi_routes
