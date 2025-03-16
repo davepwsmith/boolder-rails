@@ -20,7 +20,7 @@
 
 <div class="col-span-6 sm:col-span-1">
   <%= form.label :grade %>
-  <%= form.text_field :grade, autocomplete: "off" %>
+  <%= form.select :grade, Problem::GRADE_VALUES %>
 </div>
 
 <div class="col-span-6 sm:col-span-2">
@@ -31,6 +31,15 @@
 <div class="col-span-6 sm:col-span-4">
   <%= form.label :sit_start %>
   <%= form.check_box :sit_start %>
+</div>
+
+<div class="col-span-6 sm:col-span-2">
+  <%= form.label :longitude, "Longitude" %>
+  <%= form.text_field :longitude, value: @problem.geolocation[:lng], autocomplete: "off" %>
+</div>
+<div class="col-span-6 sm:col-span-2">
+  <%= form.label :latitutde, "Latitutde" %>
+  <%= form.text_field :latitude,value: @problem.geolocation[:lat], autocomplete: "off" %>
 </div>
 
 <div class="col-span-6 sm:col-span-2 sm:col-start-1">

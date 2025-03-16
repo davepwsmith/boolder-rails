@@ -34,7 +34,11 @@ class Admin::AreasController < Admin::BaseController
     set_area
 
     @area.assign_attributes(area_params)
-    @area.tags = params[:area][:joined_tags].split(",")
+    # if @area.tags.empty?
+    #   @area.tags = params[:area][:tags].split(",")
+    # else
+    #   @area.tags = nil
+    # end
 
     if cover = params[:area][:cover]
       @area.cover = params[:area][:cover]

@@ -1,6 +1,9 @@
 require "rgeo/geo_json"
 
 namespace :mapbox do
+  desc "Run all Mapbox GeoJSON Exports"
+  task all: [ :areas, :clusters, :problems, :circuits ]
+
   task areas: :environment do
     puts "exporting areas"
 

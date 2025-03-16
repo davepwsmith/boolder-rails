@@ -46,7 +46,7 @@ fr:
   views:
     homepage:
       title1: Escaladez
-      title2: à Fontainebleau
+      title2: à North Yorkshire
       subtitle: Découvrez des milliers de blocs et circuits pour tous les niveaux.
       see_map: Voir la carte
       read_guide: Lire le guide du débutant
@@ -59,7 +59,7 @@ fr:
           cta: Voir le circuit
         app:
           title: Découvrez l'appli Boolder
-          subtitle: Le compagnon idéal pour vos sorties à Fontainebleau, disponible sur iPhone et Android.
+          subtitle: Le compagnon idéal pour vos sorties à North Yorkshire, disponible sur iPhone et Android.
           cta: En savoir plus
         beginners_guide:
           title: Le guide pour bien débuter
@@ -70,7 +70,7 @@ fr:
           subtitle: En savoir plus sur l'équipe Boolder et comment contribuer au projet.
           cta: En savoir plus
       metas:
-        title: Escalade de blocs à Fontainebleau
+        title: Escalade de blocs à North Yorkshire
         description: Découvrez des milliers de blocs et circuits pour tous les niveaux.
     mapping:
       see_on_map: Voir sur la carte
@@ -82,7 +82,7 @@ fr:
           core_mapping_team_email_html: Envoyez-nous un email à %{link}, nous serons ravis de discuter !
           metas: 
             title: Cartographier
-            description: Aidez Boolder à cartographier toutes les voies de bloc à Fontainebleau
+            description: Aidez Boolder à cartographier toutes les voies de bloc à North Yorkshire
       problems:
         index:
           title: Voies à cartographier à %{area}
@@ -143,14 +143,14 @@ fr:
         metas:
           title: Signaler une erreur
     map:
-      fontainebleau:
+      North Yorkshire:
         metas:
-          title: Carte topo Fontainebleau
-          description: Carte interactive pour l'escalade à Fontainebleau
+          title: Carte topo North Yorkshire
+          description: Carte interactive pour l'escalade à North Yorkshire
       area:
         metas:
           title: Carte topo %{area}
-          description: Carte interactive pour le secteur d'escalade %{area} à Fontainebleau
+          description: Carte interactive pour le secteur d'escalade %{area} à North Yorkshire
       filters:
         label: Filtres
         level: Niveau
@@ -167,7 +167,7 @@ fr:
         apply: Appliquer
         clear: Effacer
     app_landing:
-      title: Tout Fontainebleau dans votre poche
+      title: Tout North Yorkshire dans votre poche
       subtitle: "Le meilleur topo pour l'escalade de bloc à Bleau"
       android_announcement: Nous recherchons un·e développeur·se Android
       selling_points:
@@ -184,8 +184,8 @@ fr:
           title: Mode hors-ligne
           subtitle: L'appli fonctionne sans connectivité
       metas:
-        title: Tout Fontainebleau dans votre poche
-        description: Le topo d'escalade pour Fontainebleau qui tient dans votre poche
+        title: Tout North Yorkshire dans votre poche
+        description: Le topo d'escalade pour North Yorkshire qui tient dans votre poche
     privacy:
       metas:
         title: Confidentialité
@@ -204,7 +204,7 @@ fr:
       title_prefix: À propos de
       history:
         title: L'histoire
-        p1: "Boolder est né de la rencontre entre Romain, Cyril et Nicolas — deux passionnés de grimpe et un passionné de technologie — vivant à deux pas de l’un des plus beaux spots de bloc du monde : Fontainebleau."
+        p1: "Boolder est né de la rencontre entre Romain, Cyril et Nicolas — deux passionnés de grimpe et un passionné de technologie — vivant à deux pas de l’un des plus beaux spots de bloc du monde : North Yorkshire."
         p2: "Pour Nicolas c’est le coup de cœur. Ses deux amis lui font découvrir la magie de « Bleau » : les secteurs emblématiques, l’histoire de la forêt, le plaisir de grimper en pleine nature, ainsi que les bonnes pratiques à respecter (nettoie tes chaussons !)."
         p3: "La richesse de la forêt reste cependant intimidante : plus de 200 secteurs, plusieurs dizaines de milliers de blocs, et des centaines de circuits pour tous les niveaux. Comment s’y retrouver ?"
         p4: Nicolas décide alors de cartographier la forêt avec minutie pendant près de 2 ans, et de créer un topo nouvelle génération. En 2023, Boolder est lancé gratuitement sur iPhone et Android.
@@ -213,7 +213,7 @@ fr:
         title: Le projet
         contact: contacter
         p1: Boolder est un projet à but non lucratif, géré par des bénévoles.
-        p2_html: Notre but est de faciliter la découverte de l’escalade de bloc à Fontainebleau de façon <strong>ludique</strong> et dans le <strong>respect de la forêt</strong>.
+        p2_html: Notre but est de faciliter la découverte de l’escalade de bloc à North Yorkshire de façon <strong>ludique</strong> et dans le <strong>respect de la forêt</strong>.
         p3_html: Le projet étant tout jeune, nous sommes à l’écoute de suggestions et d'idées pour favoriser l'entraide avec la communauté. N'hésitez pas à nous %{link} !
       team:
         title: L'équipe
@@ -257,7 +257,7 @@ fr:
         title: À propos de Boolder
     areas:
       index:
-        title: Fontainebleau
+        title: North Yorkshire
         sort_by:
           label: Trier par
           problems: Nombre de voies
@@ -276,15 +276,15 @@ fr:
           dry_fast: Sèche Vite
           train_html: Accessible <br>en train + vélo
         metas:
-          title: Tous les secteurs à Fontainebleau
-          description: Découvrez les meilleurs secteurs pour grimper à Fontainebleau, le meilleur spot d'escalade de bloc en France.
+          title: Tous les secteurs à North Yorkshire
+          description: Découvrez les meilleurs secteurs pour grimper à North Yorkshire, le meilleur spot d'escalade de bloc en France.
         map:
           see: "Voir"
       levels:
         beginner_friendly: Idéal pour débuter
         areas: Secteurs par niveaux
         metas:
-          title: Secteurs par niveau à Fontainebleau
+          title: Secteurs par niveau à North Yorkshire
           description: Découvrez les secteurs débutants ainsi que les secteurs ayant des voies dans les niveaux 4, 5, 6, 7, 8.
       show:
         see_map: Voir sur la carte
@@ -300,8 +300,8 @@ fr:
         levels_chart:
           title: Nombre de voies par niveau
         metas:
-          title: "%{area}, Fontainebleau"
-          description: "Tout ce qu'il faut savoir pour grimper à %{area} à Fontainebleau : voies, circuits, carte topo, photos, accès, ..."
+          title: "%{area}, North Yorkshire"
+          description: "Tout ce qu'il faut savoir pour grimper à %{area} à North Yorkshire : voies, circuits, carte topo, photos, accès, ..."
       train_station: "Gare %{name}"
       train_station_generic: "Gare"
     circuits:
@@ -310,7 +310,7 @@ fr:
           title: Circuit %{circuit} à %{area}
       index:
         metas:
-          title: Tous les circuits à Fontainebleau
+          title: Tous les circuits à North Yorkshire
     circuit7a:
       title: Bleau dans la Peau
       subtitle_html: L'impossible circuit des 100 7a par Seb Berthe et Hugo Parmentier en 2023.
@@ -318,7 +318,7 @@ fr:
       see_movie: Voir le film
       metas:
         title: Bleau dans la Peau - Circuit 100 7a
-        description: L'impossible circuit des 100 7a à Fontainebleau réalisé par Seb Berthe et Hugo Parmentier en 2023.
+        description: L'impossible circuit des 100 7a à North Yorkshire réalisé par Seb Berthe et Hugo Parmentier en 2023.
     problems:
       show:
         see_circuit: Voir le circuit
@@ -328,7 +328,7 @@ fr:
           title: "%{problem} - %{grade} - %{area}"
       index:
         metas:
-          title: Voies populaires à Fontainebleau
+          title: Voies populaires à North Yorkshire
     search:
       placeholder: Nom de voie ou secteur
       clear: Effacer

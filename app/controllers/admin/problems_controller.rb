@@ -1,4 +1,5 @@
 class Admin::ProblemsController < Admin::BaseController
+  before_action :fix_params, only: [ :create, :update ]
   def index
     @area = Area.find_by(slug: params[:area_slug])
 
@@ -59,7 +60,7 @@ class Admin::ProblemsController < Admin::BaseController
 
   def update
     set_problem
-
+    puts params
     @problem.assign_attributes(problem_params)
 
     if @problem.save
@@ -76,11 +77,29 @@ class Admin::ProblemsController < Admin::BaseController
     params.require(:problem).
       permit(:area_id, :name, :grade, :steepness, :sit_start,
        :circuit_number, :circuit_letter, :circuit_id, :parent_id,
+       :latitude, :longitude, :location
       )
   end
 
   def set_problem
     @problem = Problem.find(params[:id])
     @circuits = @problem.area.sorted_circuits
+  end
+
+  def fix_params
+    params[:problem].delete(:location)
+    lng = params[:problem].delete(:longitude)
+    lat = params[:problem].delete(:latitude)
+    puts "LNG: #{lng}"
+    puts "LAT: #{lat}"
+
+    lng = lng.to_f
+    lat = lat.to_f
+    puts "LNG: #{lng}"
+    puts "LAT: #{lat}"
+
+    if lat != 0 && lng != 0
+      params[:problem][:location] = RGeo::Geographic.simple_mercator_factory.point(lng, lat)
+    end
   end
 end

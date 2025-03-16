@@ -15,7 +15,7 @@
               <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
             </svg>
           </div>
-          <input id="search" name="search" data-action="click->search#openModal" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-emerald-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 sm:text-sm" placeholder="<%= t('views.search.placeholder') %>" type="search" aria-controls="searchModal" aria-label="Search">
+          <input id="search" name="search" data-action="click->search#openModal" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-red-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-red-500 sm:text-sm" placeholder="<%= t('views.search.placeholder') %>" type="search" aria-controls="searchModal" aria-label="Search">
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
       <div id="modal-content" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-full max-w-md sm:max-w-lg sm:align-middle sm:my-8 sm:w-full sm:rounded-xl sm:shadow-2xl">
         <div class="relative">
-          <svg id="search-icon" data-search-target="searchIcon" class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-emerald-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <svg id="search-icon" data-search-target="searchIcon" class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-red-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
           </svg>
           <svg id="spinner-icon" data-search-target="spinnerIcon" class="hidden pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">

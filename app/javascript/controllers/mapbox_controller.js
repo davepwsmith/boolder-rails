@@ -22,16 +22,139 @@ export default class extends Controller {
     circuit7aSource: String,
   }
 
+  prob_json = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -1.8025145119704575,
+            53.91712851920698
+          ]
+        },
+        "properties": {
+          "grade": "1a",
+          "steepness": "slab",
+          "featured": false,
+          "popularity": null,
+          "id": 3,
+          "circuitColor": null,
+          "circuitId": null,
+          "circuitNumber": null,
+          "name": "The Chipped Steps",
+          "nameEn": ""
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -1.8025360598495297,
+            53.91717853556847
+          ]
+        },
+        "properties": {
+          "grade": "2a",
+          "steepness": "slab",
+          "featured": false,
+          "popularity": null,
+          "id": 2,
+          "circuitColor": null,
+          "circuitId": null,
+          "circuitNumber": null,
+          "name": "Calf Arete",
+          "nameEn": ""
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.8025032674292731,
+                53.91720857214622
+              ],
+              [
+                -1.802453627384324,
+                53.9172155600418
+              ],
+              [
+                -1.8023849717152984,
+                53.91720573153654
+              ],
+              [
+                -1.8023455484492388,
+                53.91719164875238
+              ],
+              [
+                -1.802336948845607,
+                53.91716986235065
+              ],
+              [
+                -1.802343873256774,
+                53.917146519488625
+              ],
+              [
+                -1.8023482498326189,
+                53.917126945488974
+              ],
+              [
+                -1.8023886381108696,
+                53.917113753864385
+              ],
+              [
+                -1.802422282542068,
+                53.91710938078177
+              ],
+              [
+                -1.8024634283308956,
+                53.917110226792715
+              ],
+              [
+                -1.8024916199572658,
+                53.91712130028648
+              ],
+              [
+                -1.8025125312264265,
+                53.91712760925489
+              ],
+              [
+                -1.8025255916610945,
+                53.91715865526456
+              ],
+              [
+                -1.8025397204222884,
+                53.91718773405543
+              ],
+              [
+                -1.8025294193656691,
+                53.91719981913053
+              ],
+              [
+                -1.8025032674292731,
+                53.91720857214622
+              ]
+            ]
+          ]
+        },
+        "properties": {}
+      }
+    ]
+  }
+
   connect() {
     mapboxgl.accessToken = this.tokenValue;
 
     this.map = new mapboxgl.Map({
       container: 'map',
-      language: this.localeValue, // doesn't seem to work?
-      locale: this.localeValue == 'fr' ? this.getFrLocale() : null,
       hash: true,
-      style: `mapbox://styles/nmondollot/cl95n147u003k15qry7pvfmq2${this.draftValue ? "/draft" : ""}`,
-      bounds: [[2.4806787, 48.2868427],[2.7698927,48.473906]], 
+      style: `mapbox://styles/mapbox/outdoors-v12`,
+      bounds: [[-2.78156, 53.7562],[-1.08805,54.3826]], 
       padding: 5,
     });
 
@@ -80,421 +203,339 @@ export default class extends Controller {
     );
   }
 
+  
+
   addLayers() {
+
     this.map.addSource('problems', {
-      type: 'vector',
-      url: 'mapbox://nmondollot.4xsv235p',
-      promoteId: "id"
-    });
+      'type': 'geojson',
+      'data': this.prob_json
+    })
+
+    this.map.addLayer({
+      id: 'boulders',
+      type: 'fill', 
+      source: 'problems', 
+      filter: ["==", ["geometry-type"], "Polygon"]
+    })
 
     this.map.addLayer({
       'id': 'problems',
-      'type': 'circle',
-      'source': 'problems',
-      'source-layer': 'problems-ayes3a',
-      'minzoom': 15,
-      'layout': {
-        'visibility': 'visible',
-        'circle-sort-key': 
-          [
-            "case",
-            ["has", "circuitId"],
-            2,
-            1
-          ]
-      },
+      'type': 'circle', 
+      'source': 'problems', 
+      'filter': ["==", ["geometry-type"], "Point"],
       'paint': {
-        'circle-radius': 
-          [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            15,
-            2,
-            18,
-            4,
-            22,
-            [
-              "case",
-              ["has", "circuitNumber"],
-              16,
-              10
-            ]
-          ]
-        ,
-        'circle-color':  // FIXME: make it DRY  
-          [
-            "case",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "yellow"],
-              true,
-              false
-            ],
-            "#FFCC02",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "purple"],
-              true,
-              false
-            ],
-            "#D783FF",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "orange"],
-              true,
-              false
-            ],
-            "#FF9500",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "green"],
-              true,
-              false
-            ],
-            "#77C344",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "blue"],
-              true,
-              false
-            ],
-            "#017AFF",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "skyblue"],
-              true,
-              false
-            ],
-            "#5AC7FA",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "salmon"],
-              true,
-              false
-            ],
-            "#FDAF8A",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "red"],
-              true,
-              false
-            ],
-            "#FF3B2F",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "black"],
-              true,
-              false
-            ],
-            "#000",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "white"],
-              true,
-              false
-            ],
-            "#FFFFFF",
-            "#878A8D"
-          ]
-        ,
-        'circle-opacity': 
-        [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          14.5,
-          0,
-          15,
-          1
-        ]
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-    }
-    ,
-    "areas" // layer will be inserted just before this layer
-    );
+                'circle-radius': 4,
+                'circle-stroke-width': 2,
+                'circle-color': 'red',
+                'circle-stroke-color': 'white'
+            },
+      'minzoom': 17
+    })
 
-    this.map.addLayer({
-      'id': 'problems-texts',
-      'type': 'symbol',
-      'source': 'problems',
-      'source-layer': 'problems-ayes3a',
-      'minzoom': 19,
-      'layout': {
-        'visibility': 'visible',
-        'text-allow-overlap': true,
-        'text-field': [
-          "to-string",
-          ["get", "circuitNumber"]
-        ],
-        'text-size': [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          19,
-          10,
-          22,
-          20
-        ],
-      },
-      'paint': {
-        'text-color': 
-          [
-            "case",
-            [
-              "match",
-              ["get", "circuitColor"],
-              ["", "white"],
-              true,
-              false
-            ],
-            "#333",
-            "#fff",
-          ]
-        ,
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-    });
-
-    // CONTRIBUTE LAYERS
-
-    if(this.contributeValue) {
-
-      this.map.addSource('contribute', {
-        type: 'geojson',
-        data: this.contributeSourceValue,
-      });
-  
-      this.map.addLayer({
-      'id': 'contribute-problems',
-      'type': 'circle',
-      'source': 'contribute',
-      // 'source-layer': 'problems-ayes3a',
-      // 'minzoom': 12,
-      'layout': {
-        'visibility': 'visible',
-        'circle-sort-key': 
-          [
-            "case",
-            ["has", "circuitId"],
-            2,
-            1
-          ]
-      },
-      'paint': {
-        'circle-radius': 
-          [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            12,
-            6,
-            17,
-            20,
-            18,
-            25,
-            19,
-            50,
-            20,
-            50,
-            21,
-            50,
-            22,
-            20,
-          ]
-        ,
-        'circle-color': "#FFCC02",
-        'circle-opacity': 0.25,
-        'circle-stroke-width': 2,
-        'circle-stroke-color': 'white'
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-      }
-      ,
-      "areas" // layer will be inserted just before this layer
-      );
-  
-      this.map.addLayer({
-      'id': 'contribute-problems-texts',
-      'type': 'symbol',
-      'source': 'contribute',
-      // 'source-layer': 'problems-ayes3a',
-      'minzoom': 16,
-      'layout': {
-        'visibility': 'visible',
-        'text-allow-overlap': true,
-        'text-field': [
-          "to-string",
-          ["get", "name"]
-        ],
-        'text-size': [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          19,
-          10,
-          22,
-          20
-        ],
-      },
-      'paint': {
-        'text-color': "#333",
-        'text-halo-color': "hsl(0, 0%, 100%)",
-        'text-halo-width': 1,
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-      });
-    }
-
-    // CIRCUIT 7A LAYERS
-
-    if(this.circuit7aValue) {
-
-      this.map.addSource('circuit7a', {
-        type: 'geojson',
-        data: this.circuit7aSourceValue,
-      });
-  
-      this.map.addLayer({
-      'id': 'circuit7a-problems',
-      'type': 'circle',
-      'source': 'circuit7a',
-      // 'source-layer': '',
-      // 'minzoom': 12,
-      'layout': {
-        'visibility': 'visible',
-        'circle-sort-key': 
-          [
-            "case",
-            ["has", "circuitId"],
-            2,
-            1
-          ]
-      },
-      'paint': {
-        'circle-radius': 
-          [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            12,
-            6,
-            22,
-            15
-          ]
-        ,
-        'circle-color': "#FFDC36",
-        // 'circle-opacity': 0.25,
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#fff'
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-      }
-      ,
-      // "areas" // layer will be inserted just before this layer
-      );
-  
-      this.map.addLayer({
-      'id': 'circuit7a-problems-texts',
-      'type': 'symbol',
-      'source': 'circuit7a',
-      // 'source-layer': '',
-      'minzoom': 13,
-      'layout': {
-        'visibility': 'visible',
-        // 'text-allow-overlap': true,
-        'text-field': [
-          "to-string",
-          ["get", "index"]
-        ],
-        'text-size': [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          12,
-          10,
-          22,
-          20
-        ],
-      },
-      'paint': {
-        'text-color': "#fff",
-      },
-      filter: [
-        "match",
-          ["geometry-type"],
-          ["Point"],
-          true,
-          false
-      ],
-      });
-
-      this.map.addSource('circuit7a-bike', {
-        type: 'vector',
-        url: 'mapbox://nmondollot.c2qwxo24',
-        promoteId: "id"
-      });
-
-      this.map.addLayer({
-      'id': 'circuit7a-bike',
-      'type': 'line',
-      'source': 'circuit7a-bike',
-      'source-layer': 'top7a-bike-2kosot',
-      // 'minzoom': 8,
-      'layout': {
-        'visibility': 'visible',
-      },
-      'paint': {
-        'line-color': "#FFDC36",
-        'line-width': 4,
-      },
-      }
-      ,
-      "areas" // layer will be inserted just before this layer
-      );
-    }
   }
+
+  // addLayers() {
+  //   this.map.addSource('problems', {
+  //     type: 'vector',
+  //     url: 'mapbox://davepwsmith.cm8c21lfb0oba1ppcl3lzm7l9-50i8u',
+  //     promoteId: "id"
+  //   });
+
+  //   this.map.addLayer({
+  //     'id': 'problems',
+  //     'type': 'circle',
+  //     'source': 'problems',
+  //     'source-layer': 'problems',
+  //     'minzoom': 15,
+  //     'layout': {
+  //       'visibility': 'visible',
+  //       'circle-sort-key': 
+  //         [
+  //           "case",
+  //           ["has", "circuitId"],
+  //           2,
+  //           1
+  //         ]
+  //     },
+  //     'paint': {
+  //       'circle-radius': 
+  //         [
+  //           "interpolate",
+  //           ["linear"],
+  //           ["zoom"],
+  //           15,
+  //           2,
+  //           18,
+  //           4,
+  //           22,
+  //           [
+  //             "case",
+  //             ["has", "circuitNumber"],
+  //             16,
+  //             10
+  //           ]
+  //         ]
+  //       ,
+  //       'circle-color':  // FIXME: make it DRY  
+  //         [
+  //           "case",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "yellow"],
+  //             true,
+  //             false
+  //           ],
+  //           "#FFCC02",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "purple"],
+  //             true,
+  //             false
+  //           ],
+  //           "#D783FF",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "orange"],
+  //             true,
+  //             false
+  //           ],
+  //           "#FF9500",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "green"],
+  //             true,
+  //             false
+  //           ],
+  //           "#77C344",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "blue"],
+  //             true,
+  //             false
+  //           ],
+  //           "#017AFF",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "skyblue"],
+  //             true,
+  //             false
+  //           ],
+  //           "#5AC7FA",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "salmon"],
+  //             true,
+  //             false
+  //           ],
+  //           "#FDAF8A",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "red"],
+  //             true,
+  //             false
+  //           ],
+  //           "#FF3B2F",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "black"],
+  //             true,
+  //             false
+  //           ],
+  //           "#000",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "white"],
+  //             true,
+  //             false
+  //           ],
+  //           "#FFFFFF",
+  //           "#878A8D"
+  //         ]
+  //       ,
+  //       'circle-opacity': 
+  //       [
+  //         "interpolate",
+  //         ["linear"],
+  //         ["zoom"],
+  //         14.5,
+  //         0,
+  //         15,
+  //         1
+  //       ]
+  //     },
+  //     filter: [
+  //       "match",
+  //         ["geometry-type"],
+  //         ["Point"],
+  //         true,
+  //         false
+  //     ],
+  //   }
+  //   ,
+  //   "areas" // layer will be inserted just before this layer
+  //   );
+
+  //   this.map.addLayer({
+  //     'id': 'problems-texts',
+  //     'type': 'symbol',
+  //     'source': 'problems',
+  //     'source-layer': 'problems-ayes3a',
+  //     'minzoom': 19,
+  //     'layout': {
+  //       'visibility': 'visible',
+  //       'text-allow-overlap': true,
+  //       'text-field': [
+  //         "to-string",
+  //         ["get", "circuitNumber"]
+  //       ],
+  //       'text-size': [
+  //         "interpolate",
+  //         ["linear"],
+  //         ["zoom"],
+  //         19,
+  //         10,
+  //         22,
+  //         20
+  //       ],
+  //     },
+  //     'paint': {
+  //       'text-color': 
+  //         [
+  //           "case",
+  //           [
+  //             "match",
+  //             ["get", "circuitColor"],
+  //             ["", "white"],
+  //             true,
+  //             false
+  //           ],
+  //           "#333",
+  //           "#fff",
+  //         ]
+  //       ,
+  //     },
+  //     filter: [
+  //       "match",
+  //         ["geometry-type"],
+  //         ["Point"],
+  //         true,
+  //         false
+  //     ],
+  //   });
+
+  //   // CONTRIBUTE LAYERS
+
+  //   if(this.contributeValue) {
+
+  //     this.map.addSource('contribute', {
+  //       type: 'geojson',
+  //       data: this.contributeSourceValue,
+  //     });
+  
+  //     this.map.addLayer({
+  //     'id': 'contribute-problems',
+  //     'type': 'circle',
+  //     'source': 'contribute',
+  //     // 'source-layer': 'problems-ayes3a',
+  //     // 'minzoom': 12,
+  //     'layout': {
+  //       'visibility': 'visible',
+  //       'circle-sort-key': 
+  //         [
+  //           "case",
+  //           ["has", "circuitId"],
+  //           2,
+  //           1
+  //         ]
+  //     },
+  //     'paint': {
+  //       'circle-radius': 
+  //         [
+  //           "interpolate",
+  //           ["linear"],
+  //           ["zoom"],
+  //           12,
+  //           6,
+  //           17,
+  //           20,
+  //           18,
+  //           25,
+  //           19,
+  //           50,
+  //           20,
+  //           50,
+  //           21,
+  //           50,
+  //           22,
+  //           20,
+  //         ]
+  //       ,
+  //       'circle-color': "#FFCC02",
+  //       'circle-opacity': 0.25,
+  //       'circle-stroke-width': 2,
+  //       'circle-stroke-color': 'white'
+  //     },
+  //     filter: [
+  //       "match",
+  //         ["geometry-type"],
+  //         ["Point"],
+  //         true,
+  //         false
+  //     ],
+  //     }
+  //     ,
+  //     "areas" // layer will be inserted just before this layer
+  //     );
+  
+  //     this.map.addLayer({
+  //     'id': 'contribute-problems-texts',
+  //     'type': 'symbol',
+  //     'source': 'contribute',
+  //     // 'source-layer': 'problems-ayes3a',
+  //     'minzoom': 16,
+  //     'layout': {
+  //       'visibility': 'visible',
+  //       'text-allow-overlap': true,
+  //       'text-field': [
+  //         "to-string",
+  //         ["get", "name"]
+  //       ],
+  //       'text-size': [
+  //         "interpolate",
+  //         ["linear"],
+  //         ["zoom"],
+  //         19,
+  //         10,
+  //         22,
+  //         20
+  //       ],
+  //     },
+  //     'paint': {
+  //       'text-color': "#333",
+  //       'text-halo-color': "hsl(0, 0%, 100%)",
+  //       'text-halo-width': 1,
+  //     },
+  //     filter: [
+  //       "match",
+  //         ["geometry-type"],
+  //         ["Point"],
+  //         true,
+  //         false
+  //     ],
+  //     });
+  //   }
+  // }
 
   centerMap() {
     if(this.hasBoundsValue) { 
@@ -512,7 +553,7 @@ export default class extends Controller {
         speed: 2
       });
 
-      if(!this.contributeValue && !this.circuit7aValue) {
+      if(!this.contributeValue) {
 
         // FIXME: make it DRY
         const coordinates = [problem.lon, problem.lat];
@@ -538,9 +579,6 @@ export default class extends Controller {
       var url = ""
       if(this.contributeValue) {
         url = `/${this.localeValue}/mapping/map`
-      }
-      else if(this.circuit7aValue) {
-        url = `/${this.localeValue}/circuit7a/map`
       }
       else {
         url = `/${this.localeValue}/map`
@@ -605,32 +643,6 @@ export default class extends Controller {
         <span class="text-gray-400 ml-1">${problem.grade}</span>
         </div>`
       ).join("");
-       
-      new mapboxgl.Popup({closeButton:false, focusAfterOpen: false, offset: [0, -8]})
-      .setLngLat(coordinates)
-      .setHTML(html)
-      .addTo(this.map);
-    });
-
-    this.map.on('mouseenter', ['circuit7a-problems','circuit7a-problems-texts'], () => {
-      this.map.getCanvas().style.cursor = 'pointer';
-    });
-    this.map.on('mouseleave', ['circuit7a-problems','circuit7a-problems-texts'], () => {
-      this.map.getCanvas().style.cursor = '';
-    });
-
-    // FIXME: make DRY
-    this.map.on('click', ['circuit7a-problems','circuit7a-problems-texts'], (e) => {
-
-      let problem = e.features[0].properties
-
-      // FIXME: make it DRY
-      const coordinates = e.features[0].geometry.coordinates.slice();
-      var name = problem.name
-      if(this.localeValue == 'en' && problem.nameEn) {
-        name = problem.nameEn
-      }        
-      const html = `<a href="/${this.localeValue}/redirects/new?problem_id=${problem.id})" target="_blank">${name || ""}</a><span class="text-gray-400 ml-1">${problem.grade}</span>`;
        
       new mapboxgl.Popup({closeButton:false, focusAfterOpen: false, offset: [0, -8]})
       .setLngLat(coordinates)
