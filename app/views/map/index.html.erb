@@ -24,15 +24,13 @@ class="flex-auto relative"
 id='map'
 data-mapbox-target="map"
 data-mapbox-locale-value="<%= I18n.locale %>"
+data-mapbox-problemsgeojson-source-value="<%= asset_path('problems.geojson') %>"
+data-mapbox-problems-geojson-value="<%= asset_path('problems.geojson') %>"
 
 data-mapbox-contribute-source-value="<%= mapping_requests_path(format: :geojson) %>"
 data-mapbox-contribute-value="<%= params[:contribute] ? "true" : "false" %>"
-
-data-mapbox-circuit7a-source-value="<%= circuit7a_problems_path(format: :geojson) %>"
-data-mapbox-circuit7a-value="<%= params[:circuit7a] ? "true" : "false" %>"
-
 <% if @problem %> 
-data-mapbox-problem-value="<%= @problem.to_json %>" 
+data-mapbox-problem-source-value="<%= @problem.to_json %>" 
 <% end %>
 
 <% if @bounds %> 

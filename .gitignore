@@ -25,6 +25,7 @@
 # Ignore exported files
 /export/*
 
+/app/assets/geojson
 /public/assets
 .byebug_history
 

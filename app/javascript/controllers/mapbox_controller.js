@@ -4,6 +4,7 @@
 
 import { Controller } from '@hotwired/stimulus'
 
+
 export default class extends Controller {
   static targets = [ 
     "map", 
@@ -18,138 +19,13 @@ export default class extends Controller {
     draft: { type: Boolean, default: false },
     contribute: { type: Boolean, default: false },
     contributeSource: String,
-    circuit7a: { type: Boolean, default: false },
-    circuit7aSource: String,
-  }
+    problemsGeojson: String
 
-  prob_json = {
-    "type": "FeatureCollection",
-    "features": [
-      {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -1.8025145119704575,
-            53.91712851920698
-          ]
-        },
-        "properties": {
-          "grade": "1a",
-          "steepness": "slab",
-          "featured": false,
-          "popularity": null,
-          "id": 3,
-          "circuitColor": null,
-          "circuitId": null,
-          "circuitNumber": null,
-          "name": "The Chipped Steps",
-          "nameEn": ""
-        }
-      },
-      {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -1.8025360598495297,
-            53.91717853556847
-          ]
-        },
-        "properties": {
-          "grade": "2a",
-          "steepness": "slab",
-          "featured": false,
-          "popularity": null,
-          "id": 2,
-          "circuitColor": null,
-          "circuitId": null,
-          "circuitNumber": null,
-          "name": "Calf Arete",
-          "nameEn": ""
-        }
-      },
-      {
-        "type": "Feature",
-        "geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -1.8025032674292731,
-                53.91720857214622
-              ],
-              [
-                -1.802453627384324,
-                53.9172155600418
-              ],
-              [
-                -1.8023849717152984,
-                53.91720573153654
-              ],
-              [
-                -1.8023455484492388,
-                53.91719164875238
-              ],
-              [
-                -1.802336948845607,
-                53.91716986235065
-              ],
-              [
-                -1.802343873256774,
-                53.917146519488625
-              ],
-              [
-                -1.8023482498326189,
-                53.917126945488974
-              ],
-              [
-                -1.8023886381108696,
-                53.917113753864385
-              ],
-              [
-                -1.802422282542068,
-                53.91710938078177
-              ],
-              [
-                -1.8024634283308956,
-                53.917110226792715
-              ],
-              [
-                -1.8024916199572658,
-                53.91712130028648
-              ],
-              [
-                -1.8025125312264265,
-                53.91712760925489
-              ],
-              [
-                -1.8025255916610945,
-                53.91715865526456
-              ],
-              [
-                -1.8025397204222884,
-                53.91718773405543
-              ],
-              [
-                -1.8025294193656691,
-                53.91719981913053
-              ],
-              [
-                -1.8025032674292731,
-                53.91720857214622
-              ]
-            ]
-          ]
-        },
-        "properties": {}
-      }
-    ]
   }
 
   connect() {
     mapboxgl.accessToken = this.tokenValue;
-
+    
     this.map = new mapboxgl.Map({
       container: 'map',
       hash: true,
@@ -203,13 +79,12 @@ export default class extends Controller {
     );
   }
 
-  
 
   addLayers() {
 
     this.map.addSource('problems', {
       'type': 'geojson',
-      'data': this.prob_json
+      'data': this.problemsGeojsonValue
     })
 
     this.map.addLayer({
