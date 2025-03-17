@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/boolder-org/activerecord-postgis-adapter.git
-  revision: 97bf3f6fdaa06383a4b2076172366efedc2f97f2
-  branch: rails-8
-  specs:
-    activerecord-postgis-adapter (10.0.0)
-      activerecord (~> 8.0.0)
-      rgeo-activerecord (~> 8.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -62,6 +53,9 @@ GEM
       activemodel (= 8.0.1)
       activesupport (= 8.0.1)
       timeout (>= 0.4.0)
+    activerecord-postgis-adapter (11.0.0)
+      activerecord (~> 8.0.0)
+      rgeo-activerecord (~> 8.0.0)
     activestorage (8.0.1)
       actionpack (= 8.0.1)
       activejob (= 8.0.1)
@@ -129,8 +123,8 @@ GEM
       xpath (~> 3.2)
     coderay (1.1.3)
     colorize (1.1.0)
-    concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    concurrent-ruby (1.3.5)
+    connection_pool (2.5.0)
     crass (1.0.6)
     csv (3.3.0)
     date (3.4.1)
@@ -157,7 +151,7 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
@@ -196,7 +190,7 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
-    logger (1.6.4)
+    logger (1.6.6)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -213,7 +207,7 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
-    minitest (5.25.4)
+    minitest (5.25.5)
     mission_control-jobs (1.0.1)
       actioncable (>= 7.1)
       actionpack (>= 7.1)
@@ -394,7 +388,7 @@ GEM
     unicode-display_width (3.1.2)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -412,7 +406,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgis-adapter!
+  activerecord-postgis-adapter
   audited
   aws-sdk-s3
   bcrypt (~> 3.1.7)

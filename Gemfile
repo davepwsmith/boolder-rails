@@ -7,7 +7,7 @@ gem "rails", "~> 8.0"
 gem "puma", ">= 5.0"
 gem "pg"
 gem "pg_search"
-gem "activerecord-postgis-adapter", github: "boolder-org/activerecord-postgis-adapter", branch: "rails-8" # waiting for official Rails 8 support
+gem "activerecord-postgis-adapter"
 gem "aws-sdk-s3"
 gem "image_processing", "~> 1.2"
 gem "propshaft"

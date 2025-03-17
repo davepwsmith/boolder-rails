@@ -1,6 +1,6 @@
 <% set_meta_tags title: t("views.about.metas.title") %>
 
-<% set_meta_tags og: { type: "website", image: image_url("hero-about.jpg") } %>
+<% set_meta_tags og: { type: "website" } %>
 
 <main class="lg:relative bg-white">
   <div class="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:py-48 lg:text-left">
@@ -21,7 +21,6 @@
     </div>
   </div>
   <div class="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
-    <img class="absolute inset-0 h-full w-full object-cover" src="<%= image_path "hero-about.jpg" %>" alt="">
   </div>
 </main>
 
@@ -56,7 +55,7 @@
           <ul role="list" class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-4">
             <li>
               <div class="space-y-6">
-                <%= image_tag "team-nico.jpg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
+                <%= image_tag "logo.svg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
                 <div class="space-y-2">
                   <div class="space-y-1 text-lg font-medium leading-6">
                     <h3>Nicolas</h3>
@@ -84,53 +83,7 @@
             </div>
           </li>
 
-          <li>
-            <div class="space-y-6">
-              <%= image_tag "team-emile.jpg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
-              <div class="space-y-2">
-                <div class="space-y-1 text-lg font-medium leading-6">
-                  <h3>Émile</h3>
-                  <!-- <span class="text-gray-500"><%= t("views.about.team.emile_desc") %></span> -->
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="space-y-6">
-              <%= image_tag "team-gael.jpg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
-              <div class="space-y-2">
-                <div class="space-y-1 text-lg font-medium leading-6">
-                  <h3>Gaël</h3>
-                  <!-- <span class="text-gray-500"><%= t("views.about.team.emile_desc") %></span> -->
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="space-y-6">
-              <%= image_tag "team-cyril.jpg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
-              <div class="space-y-2">
-                <div class="space-y-1 text-lg font-medium leading-6">
-                  <h3>Cyril</h3>
-                  <!-- <span class="text-gray-500"><%= t("views.about.team.cyril_desc") %></span> -->
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="space-y-6">
-              <%= image_tag "team-romain.jpg", class: "mx-auto h-40 w-40 rounded-full xl:h-48 xl:w-48" %>
-              <div class="space-y-2">
-                <div class="space-y-1 text-lg font-medium leading-6">
-                  <h3>Romain</h3>
-                  <!-- <span class="text-gray-500"><%= t("views.about.team.romain_desc") %></span> -->
-                </div>
-              </div>
-            </div>
-          </li>
+          
         </ul>
       </div>
     </div>
