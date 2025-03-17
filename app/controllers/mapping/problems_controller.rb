@@ -1,4 +1,5 @@
 class Mapping::ProblemsController < ApplicationController
+  allow_unauthenticated_access
   def show
     @problem = Problem.find(params[:id])
     @contributions = @problem.contributions.pending

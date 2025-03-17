@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  allow_unauthenticated_access
   layout false, only: [ :soon ]
 
   def index

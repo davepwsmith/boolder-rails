@@ -1,4 +1,5 @@
 class Mapping::ContributionRequestsController < ApplicationController
+  allow_unauthenticated_access
   def index
     factory = RGeo::GeoJSON::EntityFactory.instance
 

@@ -1,4 +1,5 @@
 class Mapping::ContributionsController < ApplicationController
+  allow_unauthenticated_access
   def show
     @contribution = Contribution.find(params[:id])
   end

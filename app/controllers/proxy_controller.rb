@@ -2,6 +2,7 @@
 class ProxyController < ActiveStorage::BaseController
   include ActiveStorage::Streaming
   include ActiveStorage::DisableSession
+  allow_unauthenticated_access
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 

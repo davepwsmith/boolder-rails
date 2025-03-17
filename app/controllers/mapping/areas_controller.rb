@@ -1,4 +1,5 @@
 class Mapping::AreasController < ApplicationController
+  allow_unauthenticated_access
   def index
     @areas = Area.published.
       map { |a| OpenStruct.new(

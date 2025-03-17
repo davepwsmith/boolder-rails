@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authentication
   around_action :switch_locale
   before_action :set_alternate_tags
 

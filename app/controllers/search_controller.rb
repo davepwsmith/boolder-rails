@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  allow_unauthenticated_access
   def search
     query = params[:query]
     show_unpublished = params[:show_unpublished].present?

@@ -1,4 +1,5 @@
 class MapController < ApplicationController
+  allow_unauthenticated_access
   layout "map"
 
   def index

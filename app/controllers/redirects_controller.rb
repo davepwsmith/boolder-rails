@@ -1,4 +1,5 @@
 class RedirectsController < ApplicationController
+  allow_unauthenticated_access
   def new
     if problem_id = params[:problem_id]
       redirect_to helpers.problem_friendly_path(Problem.find(problem_id))

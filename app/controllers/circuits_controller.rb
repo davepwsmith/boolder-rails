@@ -1,4 +1,5 @@
 class CircuitsController < ApplicationController
+  allow_unauthenticated_access
   def index
     @circuits = Circuit.all.select { |c| c.problems.any? }.sort_by(&:average_grade)
   end

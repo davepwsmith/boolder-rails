@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  allow_unauthenticated_access
   def new
     @contribution = Contribution.new(
       # TODO: make DRY
