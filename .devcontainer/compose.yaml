@@ -34,7 +34,7 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: dump-prod
+        POSTGRES_DB: boolder-dev
 
 volumes:
   postgres-data:
