@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   layout false, only: [ :soon ]
 
   def index

@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def new
     @contribution = Contribution.new(
       # TODO: make DRY

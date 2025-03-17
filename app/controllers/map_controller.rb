@@ -1,5 +1,6 @@
 class MapController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   layout "map"
 
   def index

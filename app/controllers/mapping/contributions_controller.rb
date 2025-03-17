@@ -1,5 +1,6 @@
 class Mapping::ContributionsController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def show
     @contribution = Contribution.find(params[:id])
   end

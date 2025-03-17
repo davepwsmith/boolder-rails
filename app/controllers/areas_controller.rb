@@ -1,5 +1,6 @@
 class AreasController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def index
     # see https://guides.rubyonrails.org/caching_with_rails.html#avoid-caching-instances-of-active-record-objects
     @popular_areas_ids = Rails.cache.fetch("areas/index/popular_areas_ids", expires_in: 12.hours) do

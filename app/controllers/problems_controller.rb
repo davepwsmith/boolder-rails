@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def show
     @problem = Problem.find(params[:id])
     @line = @problem.lines.published.first

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :session
-  resources :passwords, param: :token
+  resources :passwords, param: :tokenW
+
   get "up" => "rails/health#show", as: :rails_health_check
   mount MissionControl::Jobs::Engine, at: "/jobs"
 
@@ -69,16 +70,6 @@ Rails.application.routes.draw do
 
     # Permalinks (don't remove!)
     get "/p/:id", to: "welcome#problem_permalink" # used by the apps to redirect to a problem webpage
-  end
-
-  # Deprecated
-  namespace :api do
-    namespace :v1 do
-      resources :topos, only: :show
-      resources :areas do
-        resources :topos, only: :index
-      end
-    end
   end
 
   get "search", to: "search#search", as: :search

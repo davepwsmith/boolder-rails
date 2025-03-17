@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def search
     query = params[:query]
     show_unpublished = params[:show_unpublished].present?

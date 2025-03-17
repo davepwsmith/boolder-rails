@@ -20,12 +20,17 @@
       <div></div>
 
       <nav class="flex flex-wrap justify-center" aria-label="Footer">
+        <% if Current.user %>
+          <%= button_to "Logout", session_path, method: :delete, class:  "px-4 py-2 text-base text-gray-400 hover:text-gray-900" %>
+        <% else %>
+          <%= link_to "Admin", new_session_path, class: "px-4 py-2 text-base text-gray-400 hover:text-gray-900" %>
+        <% end %>
         <% if I18n.locale == :en %>
-          <a href="<%= request.env['PATH_INFO'].sub('/en', '/fr') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= request.env['PATH_INFO'].sub('/en', '/fr') %>" class="px-4 py-2 text-base text-gray-400 hover:text-gray-900">
             Français
           </a>
         <% else %>
-          <a href="<%= request.env['PATH_INFO'].sub('/fr', '/en') %>" class="py-2 text-base text-gray-400 hover:text-gray-900">
+          <a href="<%= request.env['PATH_INFO'].sub('/fr', '/en') %>" class="px-4 py-2 text-base text-gray-400 hover:text-gray-900">
             English
           </a>
         <% end %>

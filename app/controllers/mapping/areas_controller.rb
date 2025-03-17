@@ -1,5 +1,6 @@
 class Mapping::AreasController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def index
     @areas = Area.published.
       map { |a| OpenStruct.new(

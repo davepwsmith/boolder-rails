@@ -1,5 +1,6 @@
 class Mapping::ContributionRequestsController < ApplicationController
   allow_unauthenticated_access
+  before_action :resume_session
   def index
     factory = RGeo::GeoJSON::EntityFactory.instance
 
