@@ -1,9 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  grade: MyString
+  name: The Chipped Slab
+  grade: 1a
+  steepness: slab
+  location: POINT (-1.8025247312908448 53.917131353184516)
+  area: one
 
 two:
-  name: MyString
-  grade: MyString
+  name: Calf Arete
+  grade: 2a
+  steepness: slab
+  location: POINT (-1.8025409407015047 53.91718414108914)
+  area: one
+
+three:
+  name: Rocky Road
+  grade: 6b
+  steepness: slab
+  location: POINT (-1.8127342669389748 53.91494170740586)
+  area: two

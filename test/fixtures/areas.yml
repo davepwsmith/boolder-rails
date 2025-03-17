@@ -1,7 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Ilkely Quarries
+  slug: ilkley-quarries
+  published:  true
+  cluster: one
 
 two:
-  name: MyString
+  name: Rocky Valley
+  slug: ilkley-rocky-valley
+  published: true
+  cluster: one
