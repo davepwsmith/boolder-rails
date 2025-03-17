@@ -14,14 +14,15 @@ gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", "~> 4.0"
 # gem "tailwindcss-ruby", "3.4.13" # pin to tailwindcss version 3.4.13
 gem "bcrypt", "~> 3.1.7"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "tzinfo-data"
 gem "solid_cache"
 gem "solid_cable"
 gem "solid_queue"
 gem "mission_control-jobs"
+gem "ostruct"
 
 gem "bootsnap", require: false
 gem "kamal", require: false
@@ -33,14 +34,13 @@ gem "kaminari"
 gem "httparty"
 gem "colorize"
 gem "audited"
-gem "ostruct" # TODO: remove
-gem "rgeo-geojson", "~> 2.1.1" # TODO: update
+gem "rgeo-geojson"
 gem "differ"
 gem "breadcrumbs_on_rails"
 gem "meta-tags"
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   gem "pry"

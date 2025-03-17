@@ -26,7 +26,7 @@
           <% end %>
           <div class="pr-16">&nbsp;</div>
         </div>
-        <div class="hidden lg:block inset-y-0 right-0 flex bg-gradient-to-l from-gray-100 pl-8 pr-8 pointer-events-none absolute"></div>
+        <div class="hidden lg:block inset-y-0 right-0 flex bg-linear-to-l from-gray-100 pl-8 pr-8 pointer-events-none absolute"></div>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
         <%= t("views.areas.levels.areas") %>
       </h2>
 
-      <div class="overflow-hidden bg-white shadow ring-1 ring-black ring-opacity-5 md:rounded-lg text-sm sm:text-base">
+      <div class="overflow-hidden bg-white shadow-sm ring-1 ring-black ring-opacity-5 md:rounded-lg text-sm sm:text-base">
         <ul role="list" class="divide-y divide-gray-200">
           <% @areas_with_count.each do |area, count| %>
             <li>

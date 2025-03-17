@@ -94,7 +94,7 @@ export default class extends Controller {
   async performSearch() {
     const query = this.searchInputTarget.value.trim();
 
-    this.searchResultsTarget.classList.add('!text-gray-400', 'grayscale', 'filter');
+    this.searchResultsTarget.classList.add('text-gray-400!', 'grayscale', 'filter');
 
     if (query.length) {
       this.searchIconTarget.classList.add("hidden");
@@ -105,7 +105,7 @@ export default class extends Controller {
     const results = await debouncedFetch(query, 
       this.showUnpublished ? { show_unpublished: true } : {});
 
-    this.searchResultsTarget.classList.remove('!text-gray-400', 'grayscale', 'filter');
+    this.searchResultsTarget.classList.remove('text-gray-400!', 'grayscale', 'filter');
 
     if (query.length === 0) {
       this.clearResults();
@@ -172,13 +172,13 @@ export default class extends Controller {
       return `
         <div class="flex justify-between items-center">
           <div class="flex items-center">
-            <span style="background: ${bgColor(item.circuit_color)}; color: ${textColor(item.circuit_color)}" class="rounded-full h-6 w-6 leading-6 inline-flex justify-center flex-shrink-0">
+            <span style="background: ${bgColor(item.circuit_color)}; color: ${textColor(item.circuit_color)}" class="rounded-full h-6 w-6 leading-6 inline-flex justify-center shrink-0">
               ${item.circuit_number || "&nbsp;"}
             </span>
             <span class="ml-2">${item.name}</span>
             <span class="ml-2 text-gray-400">${item.grade}</span>
           </div>
-          <span class="ml-2 text-gray-400 flex-shrink-0">${item.area_name}</span>
+          <span class="ml-2 text-gray-400 shrink-0">${item.area_name}</span>
         </div>
       `;
     } else {
